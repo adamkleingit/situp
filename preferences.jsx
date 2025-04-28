@@ -8,6 +8,7 @@ function Preferences() {
     width: 480,
     interval: 15,
     runOnStartup: true,
+    opacity: 0.8,
   });
   const [loaded, setLoaded] = useState(false);
 
@@ -27,7 +28,9 @@ function Preferences() {
     const { id, value, type, checked } = e.target;
     setConfig((prev) => ({
       ...prev,
-      [id]: type === 'checkbox' ? checked : Number(value),
+      [id]: type === 'checkbox' ? checked : 
+            id === 'opacity' ? parseFloat(value) : 
+            Number(value),
     }));
   };
 
@@ -68,6 +71,19 @@ function Preferences() {
           value={config.interval}
           onChange={handleChange}
         />
+      </div>
+      <div className="row">
+        <label htmlFor="opacity">Opacity:</label>
+        <input
+          type="range"
+          id="opacity"
+          min="0.1"
+          max="1"
+          step="0.1"
+          value={config.opacity}
+          onChange={handleChange}
+        />
+        <span className="hint">{Math.round(config.opacity * 100)}%</span>
       </div>
       <div className="row">
         <label>

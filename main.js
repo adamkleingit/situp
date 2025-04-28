@@ -15,6 +15,7 @@ const DEFAULT_CONFIG = {
   interval: 15,
   runOnStartup: true,
   firstRun: true,
+  opacity: 0.8, // Default 80% opacity
 };
 
 // Calculate height based on 9:16 aspect ratio (portrait)
@@ -123,7 +124,7 @@ function openPreferencesWindow() {
   }
   const prefWindow = new BrowserWindow({
     width: 400,
-    height: 320,
+    height: 450,
     resizable: false,
     movable: true,
     skipTaskbar: false,
@@ -178,13 +179,14 @@ function showPopup() {
     movable: false,
     skipTaskbar: true,
     transparent: true,
-    opacity: 0.8,
+    opacity: config.opacity, // Use configured opacity
     backgroundColor: '#00000000',
     center: true,
     fullscreenable: false,
     focusable: false,
     title: 'Sit Up',
     hasShadow: false,
+    show: false,
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
@@ -203,7 +205,21 @@ function showPopup() {
   popupWindow.setContentProtection(true);
   popupWindow.setIgnoreMouseEvents(true, { forward: true });
   popupWindow.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
+  
+  // Double-lock focus prevention
+  popupWindow.setFocusable(false);
+  
+  // Load content and show window when ready
   popupWindow.loadFile(path.join(__dirname, 'popup.html'));
+  popupWindow.webContents.on('did-finish-load', () => {
+    // Show window without activating it
+    if (process.platform === 'darwin' || process.platform === 'win32') {
+      popupWindow.showInactive();
+    } else {
+      popupWindow.show();
+    }
+  });
+  
   popupWindow.on('closed', () => {
     popupWindow = null;
   });

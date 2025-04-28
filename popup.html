@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sit Up</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: transparent;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      video {
+        width: 100vw;
+        height: 100vh;
+        object-fit: contain;
+        background: transparent;
+        display: block;
+        opacity: 1; /* Let the window handle opacity */
+        pointer-events: none;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+    </style>
+  </head>
+  <body>
+    <video src="video.mp4" autoplay playsinline muted></video>
+    <script>
+      // Prevent any keyboard events from being captured
+      document.addEventListener('keydown', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+      }, true);
+      
+      // Ensure video doesn't capture focus
+      const video = document.querySelector('video');
+      video.addEventListener('play', () => {
+        video.blur();
+      });
+    </script>
+  </body>
+</html> 

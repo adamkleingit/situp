@@ -1,4 +1,6 @@
-![SitUp Infographic](situp-infographic.png)
+
+![infographics](https://github.com/user-attachments/assets/4dae1ca2-b8e4-4af2-aa45-ea54a8f7f6ae)
+
 
 ## Why SitUp?
 

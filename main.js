@@ -138,7 +138,7 @@ function openPreferencesWindow() {
       contextIsolation: false,
     },
   });
-  prefWindow.setMenuBarVisibility(false);
+  prefWindow.removeMenu();
   prefWindow.loadFile(path.join(__dirname, 'preferences.html'));
   prefWindow.webContents.on('did-finish-load', () => {
     prefWindow.webContents.send('load-config', config);
@@ -201,7 +201,8 @@ function showPopup() {
     windowOptions.alwaysOnTopLevel = 'pop-up-menu';
   }
   popupWindow = new BrowserWindow(windowOptions);
-  popupWindow.setMenuBarVisibility(false);
+  popupWindow.removeMenu();
+  popupWindow.webContents.setAudioMuted(true);
   popupWindow.setContentProtection(true);
   popupWindow.setIgnoreMouseEvents(true, { forward: true });
   popupWindow.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
@@ -230,7 +231,10 @@ function showPopup() {
   }, 3000);
 }
 
-function startReminder() {
+async function startReminder() {
+  if (!app.isReady()) {
+    await app.whenReady();
+  }
   if (intervalId) clearInterval(intervalId);
   if (config.firstRun) {
     openPreferencesWindow();

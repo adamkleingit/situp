@@ -4,7 +4,9 @@
   "version": "1.0.2",
   "description": "A simple cross-platform posture reminder that pops up a video every 15 minutes.",
   "main": "main.js",
-  "bin": "./situp.js",
+  "bin": {
+    "situp": "./situp.js"
+  },
   "author": "Adam Klein <adamklein.mail@gmail.com>",
   "license": "MIT",
   "dependencies": {

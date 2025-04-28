@@ -17,7 +17,7 @@ A simple cross-platform reminder app that helps you sit straight! Every 15 minut
 ## Usage
 
 ```
-npx situp
+@adamklein/situp
 ```
 
 The app will run in the background and show a short video popup every 15 minutes. To stop, press `Ctrl+C` in your terminal.
@@ -27,7 +27,7 @@ The app will run in the background and show a short video popup every 15 minutes
 You can launch SitUp and immediately open the Preferences window using the `--opts` (or `--preferences`) flag:
 
 ```
-npx situp --opts
+@adamklein/situp --opts
 ```
 
 This will open the Preferences window and skip the reminder popup.

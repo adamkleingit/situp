@@ -1,7 +1,7 @@
 {
   "name": "@adamklein/situp",
   "productName": "Sit Up",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A simple cross-platform posture reminder that pops up a video every 15 minutes.",
   "main": "main.js",
   "bin": {
@@ -23,7 +23,7 @@
   "scripts": {
     "start": "electron .",
     "build": "esbuild preferences.jsx --bundle --outfile=preferences.bundle.js --platform=node --format=cjs",
-    "prepublishOnly": "npm run build",
+    "prepare": "npm run build",
     "dev": "concurrently \"esbuild preferences.jsx --bundle --outfile=preferences.bundle.js --platform=node --format=cjs --watch\" \"nodemon --watch main.js --watch preferences.bundle.js --exec electron .\"",
     "postinstall": "electron-builder install-app-deps"
   },

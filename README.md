@@ -39,6 +39,12 @@ This will open the Preferences window and skip the reminder popup.
 - Window closes automatically after the video
 - No tray icon, no dock icon, minimal UI
 
+## Remove
+If you want to completely remove SitUp from your computer, run:
+```
+npm uninstall -g @adamklein/situp
+```
+
 ## License
 MIT 
 

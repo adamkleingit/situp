@@ -246,7 +246,7 @@ async function startReminder() {
 
 // Parse CLI args for --opts or --preferences
 const openPrefsArg = process.argv.includes('--opts') || process.argv.includes('--preferences');
-
+console.log({openPrefsArg});
 app.whenReady().then(() => {
   if (process.platform === 'darwin') {
     app.setName('Sit Up');

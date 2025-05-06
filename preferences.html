@@ -2,12 +2,26 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Preferences</title>
+    <title>Situp</title>
     <style>
       body {
         font-family: sans-serif;
         margin: 32px;
         background: #f8f8f8;
+      }
+      .header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 24px;
+      }
+      .logo {
+        width: 96px;
+        height: 96px;
+        margin-right: 16px;
+      }
+      h2 {
+        margin: 0;
+        font-size: 28px;
       }
       label {
         display: block;
@@ -41,14 +55,12 @@
         margin-left: 8px;
         vertical-align: middle;
       }
-      h2 {
-        margin-top: 0;
-        margin-bottom: 24px;
-      }
     </style>
   </head>
   <body>
-    <h2>Preferences</h2>
+    <div class="header">
+      <img src="icons/logo.png" alt="Situp Logo" class="logo">
+    </div>
     <div id="root"></div>
     <script src="preferences.bundle.js"></script>
   </body>

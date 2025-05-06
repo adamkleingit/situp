@@ -88,10 +88,11 @@ function isDoNotDisturb() {
 
 function createTray() {
   if (tray) return;
-  const iconPath = path.join(__dirname, 'icons', 'logo.png');
+  const iconPath = path.join(__dirname, 'icons', process.platform === 'darwin' ? 'favicon-16x16.png' : 'logo.png');
   let trayIcon = nativeImage.createFromPath(iconPath);
 
   if (process.platform === 'darwin') {
+    // For macOS, use the 16x16 monochrome icon that works in both light and dark mode
     trayIcon.setTemplateImage(true);
   }
 
@@ -99,12 +100,13 @@ function createTray() {
 
   if (process.platform === 'darwin' && typeof tray.setHighlightMode === 'function') {
     tray.setHighlightMode('never');
-    tray.setTitle('Sit Up');
+    // Remove the title text next to the icon
+    tray.setTitle('');
   }
 
   const contextMenu = Menu.buildFromTemplate([
     {
-      label: 'Show Preferences',
+      label: 'Preferences',
       click: openPreferencesWindow,
     },
     { type: 'separator' },
@@ -132,7 +134,7 @@ function openPreferencesWindow() {
     center: true,
     fullscreenable: false,
     alwaysOnTop: true,
-    title: 'Preferences',
+    title: 'Situp',
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,

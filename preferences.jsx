@@ -96,6 +96,9 @@ function Preferences() {
           Run on startup
         </label>
       </div>
+      <div className="row">
+        <span>Before saving, drag the window to the screen you want the video to play on.</span>
+        </div>
       <div className="actions">
         <button type="button" onClick={handleCancel} id="cancelBtn">
           Cancel

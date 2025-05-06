@@ -1,7 +1,7 @@
 {
   "name": "@adamklein/situp",
   "productName": "Sit Up",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A simple cross-platform posture reminder that pops up a video every 15 minutes.",
   "main": "main.js",
   "bin": {
